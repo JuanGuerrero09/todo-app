@@ -6,8 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatToDo?</title>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h1>Hola mundo</h1>
+    <header>
+        <h2 class="header-title">WhatToDo?</h2>
+    </header>
+
+    <main>
+        <menu>
+            <div class="menu-title">
+                <h1>ToDo's</h1>
+            </div>
+
+            <h3 class="menu-option" id="menu-all">All</h3>
+            <br>
+            <h3 class="menu-option"><i class="fa-solid fa-check"></i> Completed</h3>
+            <h3 class="menu-option"><i class="fa-solid fa-clock"></i> Pending</h3>
+            <br>
+            <h3 class="menu-option">High Priority</h3>
+            <h3 class="menu-option">Medium Priority</h3>
+            <h3 class="menu-option">Low Priority</h3>
+
+        </menu>
+
+        <div class="tasks-section">
+            <div class="task-title">
+                <h2>Tasks</h2>
+                <i class="fa-solid fa-square-plus"></i>
+            </div>
+            <div class="tasks-main">
+                
+            </div>
+        </div>
+
+        <button onclick="window.modal1.showModal();">Abrir ventana modal</button>
+
+        <dialog id="modal1">
+        <h2>Este es el título de mi ventana modal</h2>
+        <p>Este es un texto de ejemplo dentro de una ventana modal</p>
+        <button onclick="window.modal1.close();">Cerrar</button>
+        </dialog>
+
+
+    <footer>
+        <h3 class="footer-firm">JDev <a href="https://github.com/juanguerrero09"><i class="fa-brands fa-github"></i></a></h3>
+    </footer>
+
 </body>
 </html>

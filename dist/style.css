@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    font-family: monospace;
+}
+
+:root{
+    --main: #FF004F
+}
+
+header{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: var(--main);
+    color: white;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 5px;
+    
+}
+
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+}
+
+.menu-element{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.menu-option{
+    height: 3rem;
+}
+
+.menu-option > span{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+
+.menu-option > span:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: 
+  #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .menu-option > span:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+
+dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5%;
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+}

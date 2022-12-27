@@ -23,24 +23,55 @@
             <br>
             <h3 class="menu-option" id="menu-all"><span>All</span></h3>
             <br>
-            <h3 class="menu-option"><i class="fa-solid fa-check"></i> <span>Completed</span></h3>
-            <h3 class="menu-option"><i class="fa-solid fa-clock"></i> <span>Pending</span></h3>
+            <h3 class="menu-option"></i> <span><i class="fa-solid fa-check"></i> Completed</span></h3>
+            <h3 class="menu-option"> <span><i class="fa-solid fa-clock"></i> Pending</span></h3>
             <br>
-            <h3 class="menu-option"><span>High Priority</span></h3>
-            <h3 class="menu-option"><span>Medium Priority</span></h3>
-            <h3 class="menu-option"><span>Low Priority</span></h3>
+            <h3 class="menu-option high-p"><span>High Priority</span></h3>
+            <h3 class="menu-option med-p"><span>Medium Priority</span></h3>
+            <h3 class="menu-option low-p"><span>Low Priority</span></h3>
 
         </div>
 
         <div class="tasks-section">
             <div class="task-title">
-                <h2>Tasks</h2>
-                <i class="fa-solid fa-square-plus"></i>
+                <h2 class="">Tasks</h2>
+                <div class="add-task">
+                    <h3>Add New Task </h3>
+                    <button class="btn-title" onclick="window.modal1.showModal();">
+                        <i class="fa-solid fa-square-plus"></i>
+                    </button>
+                </div>
+                <div class="remove-task">
+                    <h3>Remove All Tasks </h3>
+                    <button class="btn-title">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
             </div>
             <div class="tasks-main">
-                
+                <div class="task-el">
+                    <div class="el-main">
+                        <input type="checkbox" name="" id="">
+                        <h2>Primera tarea </h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis animi magni quaerat cupiditate quis facere cum hic nostrum totam laudantium accusamus quasi, voluptatibus nemo necessitatibus ipsa provident et soluta dolore?</p>
+                    </div>
+                    <div class="el-btns">
+                        <i class="fa-solid fa-pen-to-square edit-btn"></i>
+                        <i class="fa-solid fa-trash trash-btn"></i>
+                    </div>
+                </div>
+                <div class="task-el">
+                        <input type="checkbox" name="" id="">
+                        <h2>Primera tarea </h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis animi magni quaerat cupiditate quis facere cum hic nostrum totam laudantium accusamus quasi, voluptatibus nemo necessitatibus ipsa provident et soluta dolore?</p>
+                        <h4>Medium Priority</h4>
+                        <h6>Due date</h6>
+                    <div class="el-btns">
+                        <i class="fa-solid fa-pen-to-square edit-btn"></i>
+                        <i class="fa-solid fa-trash trash-btn"></i>
+                    </div>
+                </div>
             </div>
-            <button onclick="window.modal1.showModal();">Abrir ventana modal</button>
         </div>
     </main>
     
@@ -49,9 +80,9 @@
             <dialog id="modal1">
                 <form class="modal-content">
                     <label for="title">Title</label>
-                    <input type="text" name="title" autofocus placeholder="Write a title..." required>
+                    <input type="text" name="title" autofocus placeholder="Write a title..." required maxlength="12">
                     <label for="title">Description</label>
-                    <input type="text" name="title" row="4" placeholder="Write a description...">
+                    <textarea type="text" name="title" row="6" maxlength="50" placeholder="Write a description..."></textarea>
                     <label for="date">Due date</label>
                     <input type="date" name="date">
                     <label for="priority">Priority</label>

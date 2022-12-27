@@ -68,6 +68,16 @@ main {
     transform-origin: bottom left;
   }
 
+  .low-p > span:after{
+    background-color: green;
+  }
+  .med-p > span:after{
+    background-color: yellow;
+  }
+  .high-p > span:after{
+    background-color: red;
+  }
+
 
 dialog{
     position: absolute;
@@ -80,4 +90,76 @@ dialog{
 .modal-content{
     display: flex;
     flex-direction: column;
+}
+
+.tasks-section{
+  padding: 15px;
+  width: 100%;
+}
+
+.task-title{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-task, .remove-task{
+  display: flex;
+  align-items: center;
+}
+
+.btn-title{
+  height: 30px;
+}
+
+.tasks-main{
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 95%;
+  outline: 1px solid red;
+  margin-top: 20px;
+}
+
+.task-el{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.el-main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 85%;
+  height: 40px;
+  font-size: 2rem;
+}
+
+/*Cambiar todo a grid*/
+
+.el-main > *{
+  margin-bottom: 0;
+
+}
+
+.el-main > h2 {
+  width: 60%;
+  margin-left: 20px;
+}
+
+.el-main > p{
+  font-size: 0.8rem;
+}
+
+.el-btns{
+  width: 5%;
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

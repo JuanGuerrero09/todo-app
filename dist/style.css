@@ -101,7 +101,7 @@ dialog{
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly
 }
 
 .add-task, .remove-task{
@@ -123,39 +123,26 @@ dialog{
 }
 
 .task-el{
-  display: flex;
+  display: grid;
+  grid-template-columns: 30px 2fr 5fr 2fr 1fr 0.5fr;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
 }
 
-.el-main{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 85%;
-  height: 40px;
-  font-size: 2rem;
+.task-el > * {
+  margin: 0 10px;
 }
+
 
 /*Cambiar todo a grid*/
 
-.el-main > *{
-  margin-bottom: 0;
-
-}
-
-.el-main > h2 {
-  width: 60%;
-  margin-left: 20px;
-}
-
-.el-main > p{
-  font-size: 0.8rem;
-}
 
 .el-btns{
-  width: 5%;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  cursor: pointer;
 }
 
 footer{

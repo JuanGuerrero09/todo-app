@@ -124,7 +124,7 @@ dialog{
 
 .task-el{
   display: grid;
-  grid-template-columns: 30px 2fr 5fr 2fr 1fr 0.5fr;
+  grid-template-columns: 30px 2fr 3fr 2fr 2fr 0.5fr;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
@@ -142,6 +142,9 @@ dialog{
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+}
+
+a{
   cursor: pointer;
 }
 

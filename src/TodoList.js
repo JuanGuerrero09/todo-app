@@ -1,58 +1,39 @@
 class TodoList{
     #allTasks
+    #activeTasks
 
     constructor(){
         this.#allTasks= []
-        this.activeTasks = []
+        this.#activeTasks = []
     }
-    filterTasks(filter, type){
-        if (filter == 'state'){
-            this.activeTasks = this.#allTasks.filter(todo => todo.state == type)
+    filterTasks(type, value sr){
+        if (type == 'state'){
+            this.#activeTasks = this.#allTasks.filter(todo => todo.state == value)
         }
-        if (filter == 'priority'){
-            this.activeTasks = this.#allTasks.filter(todo => todo.priority == type)
+        if (type == 'priority'){
+            this.#activeTasks = this.#allTasks.filter(todo => todo.priority == value)
         }
     }
-    removeTask(name){
-        this.#allTasks = this.#allTasks.filter(todo => todo.name != name)
+    removeTask(title){
+        this.#allTasks = this.#allTasks.filter(todo => todo.title != title)
     }
     addTask(ToDo){
         this.#allTasks.push(ToDo)
+        this.#activeTasks.push(ToDo)
+    }
+    getActiveTasks(){
+        return this.#activeTasks
     }
 }
 
 class ToDo{
-    constructor(state, name, description, dueDate, priority){
+    constructor(state, title, description, dueDate, priority){
         this.state = state,
-        this.name = name,
+        this.title = title,
         this.description = description, 
         this.dueDate = dueDate,
         this.priority = priority
     }
 }
 
-let todo1 = new ToDo('Active', 'Primera', 'Lorem impusumsom afdsf', '09-05-2001', 'Low')
-let todo2 = new ToDo('Active', 'Segunda', 'Lorem impusumsom afdsf', '09-05-2001', 'Low')
-let todo3 = new ToDo('Disable', 'Tercera', 'Lorem impusumsom afdsf', '09-05-2001', 'High')
-let todo4 = new ToDo('Disable', 'Cuarta', 'Lorem impusumsom afdsf', '09-05-2001', 'Medium')
-let todo5 = new ToDo('Active', 'Quinta', 'Lorem impusumsom afdsf', '09-05-2001', 'Medium')
-
-const todos = new TodoList()
-
-
-todos.addTask(todo1)
-todos.addTask(todo2)
-todos.addTask(todo3)
-todos.addTask(todo4)
-todos.addTask(todo5)
-
-todos.removeTask('Tercera')
-todos.filterTasks('state', 'Active')
-console.log(todos)
-todos.filterTasks('priority', 'Medium')
-console.log(todos)
-//console.log(todos.allTasks.filter(todo => todo.priority == 'Low'))
-//console.log(todos.allTasks.filter(todo => todo.priority == 'Medium'))
-//console.log(todos.allTasks.filter(todo => todo.state == 'Active'))
-
-
+export {ToDo, TodoList}

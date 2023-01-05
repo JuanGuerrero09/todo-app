@@ -5,36 +5,41 @@ const ui = new UI()
 const todoList = new TodoList()
 const form = document.getElementById('task-form')
 const menuOptions = document.querySelectorAll('.menu-option-el')
-console.log(menuOptions)
+const removeAllTasksBtn = document.querySelector('.removeAllBtn')
 
 form.addEventListener('submit', createTodo)
 menuOptions.forEach(menu => menu.addEventListener('click', filterTodoList))
 
-let todo1 = new ToDo('Completed', 'Primera', 'Lorem impusumsom afdsf', '09-05-2001', 'Low Priority')
-let todo2 = new ToDo('Completed', 'Segunda', 'Lorem impusumsom afdsf', '09-05-2001', 'Low Priority')
-let todo3 = new ToDo('Pending', 'Tercera', 'Lorem impusumsom afdsf', '09-05-2001', 'High Priority')
-let todo4 = new ToDo('Pending', 'Cuarta', 'Lorem impusumsom afdsf', '09-05-2001', 'Medium Priority')
-let todo5 = new ToDo('Completed', 'Quinta', 'Lorem impusumsom afdsf', '09-05-2001', 'Medium Priority')
 
-todoList.addTask(todo1)
-todoList.addTask(todo2)
-todoList.addTask(todo3)
-todoList.addTask(todo4)
-todoList.addTask(todo5)
+removeAllTasksBtn.addEventListener('click', () => {
+    todoList.deleteAllTasks()
+    localStorage.clear()
+    ui.showTasks()    
+})
 
-
+document.addEventListener('DOMContentLoaded', () =>{
+    let tasks = JSON.parse(localStorage.getItem('tasks'))
+    tasks.forEach(task => {
+        const todo = new ToDo(task)
+        todoList.addTask(todo)
+    })
+    ui.showTasks(todoList.getAllTasks())
+})
 
 
 function createTodo(e){
     e.preventDefault()
-    const title = document.getElementById('title').value,
-    description = document.getElementById('description').value,
-    dueDate = document.getElementById('dueDate').value,
-    priority = document.getElementById('priority').value
-
-    const todo = new ToDo('Pending', title, description, dueDate, `${priority} Priority`)
+    const taskObj = {
+        state: 'Pending',
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+        dueDate: document.getElementById('dueDate').value,
+        priority: document.getElementById('priority').value
+    }
+    const todo = new ToDo(taskObj)
     todoList.addTask(todo)
     ui.showTasks(todoList.getActiveTasks())
+    localStorage.setItem('tasks', JSON.stringify(todoList.getAllTasks()))
 
 }
 
@@ -43,7 +48,6 @@ function filterTodoList(e){
     const type = filterElement.getAttribute('type')
     const value = filterElement.getAttribute('value')
     todoList.filterTasks(type, value)
-    console.log(todoList.getActiveTasks())
     ui.showTasks(todoList.getActiveTasks())
 }
 

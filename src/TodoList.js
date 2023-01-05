@@ -3,15 +3,18 @@ class TodoList{
     #activeTasks
 
     constructor(){
-        this.#allTasks= []
+        this.#allTasks = []
         this.#activeTasks = []
     }
-    filterTasks(type, value sr){
+    filterTasks(type, value){
         if (type == 'state'){
             this.#activeTasks = this.#allTasks.filter(todo => todo.state == value)
         }
         if (type == 'priority'){
             this.#activeTasks = this.#allTasks.filter(todo => todo.priority == value)
+        }
+        if (type == 'all'){
+            this.#activeTasks = this.#allTasks
         }
     }
     removeTask(title){
@@ -24,15 +27,22 @@ class TodoList{
     getActiveTasks(){
         return this.#activeTasks
     }
+    getAllTasks(){
+        return this.#allTasks
+    }
+    deleteAllTasks(){
+        this.#activeTasks = []
+        this.#allTasks = []
+    }
 }
 
 class ToDo{
-    constructor(state, title, description, dueDate, priority){
-        this.state = state,
-        this.title = title,
-        this.description = description, 
-        this.dueDate = dueDate,
-        this.priority = priority
+    constructor(todo){
+        this.state = todo.state,
+        this.title = todo.title,
+        this.description = todo.description, 
+        this.dueDate = todo.dueDate,
+        this.priority = todo.priority
     }
 }
 

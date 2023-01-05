@@ -1,13 +1,10 @@
-import { ToDo, TodoList } from "./TodoList"
-//TODO Selectores de elementos y creaadores
-
-
-
 class UI {
     showTasks(activeTasks){
+        if (activeTasks === []){
+            return 0
+        }
         const taskList = document.querySelector('.tasks-main')
         taskList.innerHTML = ''
-        console.log(taskList)
         activeTasks.forEach(ToDo => {
             const taskEl = document.createElement('div')
             taskEl.classList.add('task-el')
@@ -23,7 +20,6 @@ class UI {
                 <a><i class="fa-solid fa-trash trash-btn"></i></a>
             </div>            
             `
-            console.log(taskList)
             taskList.append(taskEl)
         });
 

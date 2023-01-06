@@ -17,7 +17,7 @@ class UI {
             <h6>${ToDo.dueDate}</h6>
             <div class="el-btns">
                 <a><i class="fa-solid fa-pen-to-square edit-btn"></i></a>
-                <a><i class="fa-solid fa-trash trash-btn"></i></a>
+                <a><i class="fa-solid fa-trash trash-btn" id="${ToDo.id}"></i></a>
             </div>            
             `
             taskList.append(taskEl)

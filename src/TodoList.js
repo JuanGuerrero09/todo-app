@@ -17,8 +17,10 @@ class TodoList{
             this.#activeTasks = this.#allTasks
         }
     }
-    removeTask(title){
-        this.#allTasks = this.#allTasks.filter(todo => todo.title != title)
+    removeTask(id){
+        this.#allTasks = this.#allTasks.filter(todo => todo.id != id)
+        this.#activeTasks = this.#activeTasks.filter(todo => todo.id != id)
+
     }
     addTask(ToDo){
         this.#allTasks.push(ToDo)
@@ -43,6 +45,7 @@ class ToDo{
         this.description = todo.description, 
         this.dueDate = todo.dueDate,
         this.priority = todo.priority
+        this.id = todo.id
     }
 }
 

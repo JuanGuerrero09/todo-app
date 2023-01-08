@@ -1,10 +1,28 @@
 class TodoList{
     #allTasks
     #activeTasks
-
+    
     constructor(){
         this.#allTasks = []
         this.#activeTasks = []
+    }
+    getActiveTasks(){
+        return this.#activeTasks
+    }
+    getAllTasks(){
+        return this.#allTasks
+    }
+    addTask(ToDo){
+        this.#allTasks.push(ToDo)
+        this.#activeTasks.push(ToDo)
+    }
+    removeTask(id){
+        this.#allTasks = this.#allTasks.filter(todo => todo.id != id)
+        this.#activeTasks = this.#activeTasks.filter(todo => todo.id != id)
+    }
+    editTask(oldToDo, newToDo){
+        //*Todo
+        let oldIndex = this.#allTasks.findIndex((oldToDo) => oldToDo.id === id)
     }
     filterTasks(type, value){
         if (type == 'state'){
@@ -16,21 +34,6 @@ class TodoList{
         if (type == 'all'){
             this.#activeTasks = this.#allTasks
         }
-    }
-    removeTask(id){
-        this.#allTasks = this.#allTasks.filter(todo => todo.id != id)
-        this.#activeTasks = this.#activeTasks.filter(todo => todo.id != id)
-
-    }
-    addTask(ToDo){
-        this.#allTasks.push(ToDo)
-        this.#activeTasks.push(ToDo)
-    }
-    getActiveTasks(){
-        return this.#activeTasks
-    }
-    getAllTasks(){
-        return this.#allTasks
     }
     deleteAllTasks(){
         this.#activeTasks = []

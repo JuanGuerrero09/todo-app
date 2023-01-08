@@ -20,9 +20,13 @@ class TodoList{
         this.#allTasks = this.#allTasks.filter(todo => todo.id != id)
         this.#activeTasks = this.#activeTasks.filter(todo => todo.id != id)
     }
-    editTask(oldToDo, newToDo){
-        //*Todo
-        let oldIndex = this.#allTasks.findIndex((oldToDo) => oldToDo.id === id)
+    editTask(oldToDoId, newToDo){
+        let oldIndex = this.#allTasks.findIndex((todo) => todo.id === oldToDoId)
+        const oldTodo = this.#allTasks[oldIndex]
+        oldTodo.title = newToDo.title
+        oldTodo.description = newToDo.description
+        oldTodo.dueDate = newToDo.dueDate
+        oldTodo.priority = newToDo.priority
     }
     filterTasks(type, value){
         if (type == 'state'){

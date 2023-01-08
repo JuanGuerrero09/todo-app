@@ -26,9 +26,9 @@
             <h3 class="menu-option completed" type="state" value="Completed"></i> <span class="menu-option-el"><i class="fa-solid fa-check"></i> Completed</span></h3>
             <h3 class="menu-option pending" type="state" value="Pending"> <span class="menu-option-el"><i class="fa-solid fa-clock"></i> Pending</span></h3>
             <br>
-            <h3 class="menu-option  high-p" type="priority" value="High Priority"><span class="menu-option-el">High Priority</span></h3>
-            <h3 class="menu-option med-p" type="priority" value="Medium Priority"><span class="menu-option-el">Medium Priority</span></h3>
-            <h3 class="menu-option low-p" type="priority" value="Low Priority"><span class="menu-option-el">Low Priority</span></h3>
+            <h3 class="menu-option  high-p" type="priority" value="High"><span class="menu-option-el">High Priority</span></h3>
+            <h3 class="menu-option med-p" type="priority" value="Medium"><span class="menu-option-el">Medium Priority</span></h3>
+            <h3 class="menu-option low-p" type="priority" value="Low"><span class="menu-option-el">Low Priority</span></h3>
 
         </div>
 
@@ -58,7 +58,7 @@
             <dialog id="modal1">
                 <form class="modal-content" id="task-form">
                     <label for="title">Title</label>
-                    <input id="title" type="text" name="title" autofocus placeholder="Write a title..." required maxlength="12">
+                    <input id="title" type="text" name="title" autofocus placeholder="Write a title..." required maxlength="25">
                     <label for="description">Description</label>
                     <textarea id="description" type="text" name="description" row="6" maxlength="50" placeholder="Write a description..."></textarea>
                     <label for="date">Due date</label>
@@ -71,7 +71,27 @@
                         <option value="Low">Low Priority</option>
                     </select>
                     <button type="submit">Add Task</button>
-                    <button type="reset" onclick="window.modal1.close();">Cerrar</button>
+                    <button type="reset" onclick="window.modal1.close();">Close</button>
+                </form>
+            </dialog>
+            <!--Second modal added-->
+            <dialog id="modal2">
+                <form class="modal-content" id="edit-form">
+                    <label for="title">New Title</label>
+                    <input id="edit-title" type="text" name="title" autofocus placeholder="Write a title..." required maxlength="12">
+                    <label for="description">New Description</label>
+                    <textarea id="edit-description" type="text" name="description" row="6" maxlength="50" placeholder="Write a description..."></textarea>
+                    <label for="date">New Due date</label>
+                    <input id="edit-dueDate" type="date" name="date">
+                    <label for="priority">New Priority</label>
+                    <select name="priority" id="edit-priority">
+                        <option value="">--Please choose an option--</option>
+                        <option value="High">High Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="Low">Low Priority</option>
+                    </select>
+                    <button type="submit">Edit Task</button>
+                    <button type="reset" onclick="window.modal2.close();">Cancel</button>
                 </form>
             </dialog>
 

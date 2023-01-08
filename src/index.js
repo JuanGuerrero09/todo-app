@@ -4,13 +4,17 @@ import {v4} from "uuid"
 
 const ui = new UI()
 const todoList = new TodoList()
-const form = document.getElementById('task-form')
+const submitForm = document.getElementById('task-form')
+const editForm = document.getElementById('edit-form')
+const editModal = document.getElementById('modal2')
 const menuOptions = document.querySelectorAll('.menu-option-el')
 const removeAllTasksBtn = document.querySelector('.removeAllBtn')
 
-form.addEventListener('submit', createTodo)
+submitForm.addEventListener('submit', createTodo)
+editForm.addEventListener('submit', editTodo)
 menuOptions.forEach(menu => menu.addEventListener('click', filterTodoList))
 
+let selectedId
 
 removeAllTasksBtn.addEventListener('click', () => {
     todoList.deleteAllTasks()
@@ -47,12 +51,30 @@ function createTodo(e){
 
 }
 
+function editTodo(e){
+    e.preventDefault()
+    console.log(selectedId);
+    const editedTodo = {
+        title: document.getElementById('edit-title').value,
+        description: document.getElementById('edit-description').value,
+        dueDate: document.getElementById('edit-dueDate').value,
+        priority: document.getElementById('edit-priority').value
+    }
+    console.log(editedTodo);
+    todoList.editTask(selectedId, editedTodo)
+    ui.showTasks(todoList.getActiveTasks())
+    addEventsFunctionality()
+    localStorage.setItem('tasks', JSON.stringify(todoList.getAllTasks()))
+}
+
 function filterTodoList(e){
     const filterElement = e.target.parentElement
     const type = filterElement.getAttribute('type')
     const value = filterElement.getAttribute('value')
     todoList.filterTasks(type, value)
     ui.showTasks(todoList.getActiveTasks())
+    addEventsFunctionality()
+    localStorage.setItem('tasks', JSON.stringify(todoList.getAllTasks()))
 }
 
 function addEventsFunctionality(){
@@ -61,22 +83,16 @@ function addEventsFunctionality(){
 
     deleteBtns.forEach(deleteBtn => deleteBtn.addEventListener('click', deleteFunctionality))
     editBtns.forEach(editBtn => editBtn.addEventListener('click', editFunctionality))
-
 }
-
-//TODO Add delete functionality to ui, REFACTOR
 
 function deleteFunctionality(e){
-    //todoList.removeTask();
     const id = e.target.getAttribute('id')
-    console.log(todoList.getActiveTasks(), todoList.getAllTasks())
     todoList.removeTask(id)
-    console.log(todoList.getActiveTasks(), todoList.getAllTasks())
     ui.showTasks(todoList.getActiveTasks())
     localStorage.setItem('tasks', JSON.stringify(todoList.getAllTasks()))
-
 }
 
-function editFunctionality(e){
-    console.log('soy un edit');
+function editFunctionality(e){;
+    selectedId = e.target.getAttribute('id')
+    editModal.showModal()
 }

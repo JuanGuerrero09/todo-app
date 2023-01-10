@@ -8,15 +8,21 @@
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <header >
+        <input type="checkbox" name="checkbox" id="checkbox">
+        <label class="toggle" for="checkbox">
+            <span class="top_line common"></span>
+            <span class="middle_line common"></span>
+            <span class="bottom_line common"></span>
+        </label>
         <h2 class="header-title">WhatToDo?</h2>
     </header>
 
     <main>
-        <div class="menu-element" style="width: 280px;">
+        <nav class="menu-element">
             <div class="menu-title" >
                 <h1>ToDo's</h1>
             </div>
@@ -30,9 +36,9 @@
             <h3 class="menu-option med-p" type="priority" value="Medium"><span class="menu-option-el">Medium Priority</span></h3>
             <h3 class="menu-option low-p" type="priority" value="Low"><span class="menu-option-el">Low Priority</span></h3>
 
-        </div>
+        </nav>
 
-        <div class="tasks-section">
+        <div class="tasks-section" id="task-section">
             <div class="task-title">
                 <h2 class="">Tasks</h2>
                 <div class="add-task">
@@ -58,13 +64,13 @@
             <dialog id="modal1">
                 <form class="modal-content" id="task-form">
                     <label for="title">Title</label>
-                    <input id="title" type="text" name="title" autofocus placeholder="Write a title..." required maxlength="25">
+                    <input id="title" type="text" name="title" autofocus placeholder="Write a title..." required maxlength="20">
                     <label for="description">Description</label>
                     <textarea id="description" type="text" name="description" row="6" maxlength="50" placeholder="Write a description..."></textarea>
                     <label for="date">Due date</label>
                     <input id="dueDate" type="date" name="date">
                     <label for="priority">Priority</label>
-                    <select name="priority" id="priority">
+                    <select name="priority" id="priority" required>
                         <option value="">--Please choose an option--</option>
                         <option value="High">High Priority</option>
                         <option value="Medium">Medium Priority</option>
@@ -78,19 +84,19 @@
             <dialog id="modal2">
                 <form class="modal-content" id="edit-form">
                     <label for="title">New Title</label>
-                    <input id="edit-title" type="text" name="title" autofocus placeholder="Write a title..." required maxlength="12">
+                    <input id="edit-title" type="text" name="title" autofocus placeholder="Write a title..." maxlength="20">
                     <label for="description">New Description</label>
                     <textarea id="edit-description" type="text" name="description" row="6" maxlength="50" placeholder="Write a description..."></textarea>
                     <label for="date">New Due date</label>
                     <input id="edit-dueDate" type="date" name="date">
                     <label for="priority">New Priority</label>
-                    <select name="priority" id="edit-priority">
+                    <select name="priority" id="edit-priority" required>
                         <option value="">--Please choose an option--</option>
                         <option value="High">High Priority</option>
                         <option value="Medium">Medium Priority</option>
                         <option value="Low">Low Priority</option>
                     </select>
-                    <button type="submit">Edit Task</button>
+                    <button type="submit" onclick="window.modal2.close();">Edit Task</button>
                     <button type="reset" onclick="window.modal2.close();">Cancel</button>
                 </form>
             </dialog>

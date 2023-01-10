@@ -4,6 +4,9 @@ import {v4} from "uuid"
 
 const ui = new UI()
 const todoList = new TodoList()
+const sidebarCheck = document.getElementById('checkbox')
+const sidebar = document.querySelector('.menu-element')
+const taskSection = document.getElementById('task-section')
 const submitForm = document.getElementById('task-form')
 const editForm = document.getElementById('edit-form')
 const editModal = document.getElementById('modal2')
@@ -13,6 +16,7 @@ const removeAllTasksBtn = document.querySelector('.removeAllBtn')
 submitForm.addEventListener('submit', createTodo)
 editForm.addEventListener('submit', editTodo)
 menuOptions.forEach(menu => menu.addEventListener('click', filterTodoList))
+
 
 let selectedId
 
@@ -31,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () =>{
     ui.showTasks(todoList.getAllTasks())
     addEventsFunctionality()
 })
+
+sidebarCheck.addEventListener('click', () => {
+    sidebar.classList.toggle('unhidden')
+    taskSection.classList.toggle('unhidden')
+})
+
 
 
 function createTodo(e){
@@ -90,6 +100,7 @@ function deleteFunctionality(e){
     todoList.removeTask(id)
     ui.showTasks(todoList.getActiveTasks())
     localStorage.setItem('tasks', JSON.stringify(todoList.getAllTasks()))
+    addEventsFunctionality()
 }
 
 function editFunctionality(e){;

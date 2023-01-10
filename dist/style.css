@@ -1,10 +1,15 @@
+/*ADD BOOTSTRAP*/
+
 *{
     margin: 0;
-    font-family: monospace;
+    font-family: 'Open Sans', sans-serif;
 }
 
 :root{
-    --main: #FF004F
+    font-size: 16px;
+    --main: #FF004F;
+    --second: #e71752;
+    --third: #ff0402;
 }
 
 header{
@@ -24,18 +29,119 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
+
 
 main {
     flex: 1;
     display: flex;
+    justify-content: center;
+}
+
+header > input{
+  display: none;
+  visibility: hidden;
+  width: 50px;
+  height: 50px;
+}
+
+header > h2{
+  margin-left: 50px;
+}
+
+header > input:checked{
+  display: none;
+  visibility: hidden;
+}
+
+.toggle{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 2px;
+  top: 20x;
+  left: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle .common{
+  position: absolute;
+  height: 2px;
+  width: 20px;
+  background-color: #FF004F;
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+.toggle .top_line{
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.toggle .middle_line{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.toggle .bottom_line{
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+header > input:checked ~ .toggle .top_line{
+  left: 2px;
+  top: 14px;
+  width: 25px;
+  transform: rotate(45deg);
+}
+
+header > input:checked ~ .toggle .bottom_line{
+  left: 2px;
+  top: 14px;
+  width: 25px;
+  transform: rotate(-45deg);
+}
+
+header > input:checked ~ .toggle .middle_line{
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.menu-element.unhidden{
+  transform: translateX(0);
+}
+
+.tasks-section.unhidden{
+  transform: translateX(100px);
 }
 
 .menu-element{
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
-}
+    padding-top: 15px;
+    padding-left: 15px;
+    height: 100vh;
+    width: 200px;
+    background-color: antiquewhite;
+    position: absolute;
+    left: 0;
+    transition: 0.5s ease;
+    transform: translateX(-200px);
+  }
+  
+/* .tasks-section{
+    position: absolute;
+    transition: 0.5s ease;
+    transform: translateX(-200px);
+} */
 
 .menu-option{
     height: 3rem;
@@ -50,8 +156,8 @@ main {
 
 
 .menu-option > span:after {
-    content: '';
-    position: absolute;
+  content: '';
+  position: absolute;
     width: 100%;
     transform: scaleX(0);
     height: 2px;
@@ -60,7 +166,7 @@ main {
     background-color: 
   #0087ca;
     transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+    transition: 0.25s ease-out;
   }
   
   .menu-option > span:hover:after {
@@ -94,7 +200,8 @@ dialog{
 
 .tasks-section{
   padding: 15px;
-  width: 100%;
+  width: 70%;
+  transition: 0.5s ease;
 }
 
 .task-title{
@@ -116,18 +223,32 @@ dialog{
 .tasks-main{
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: 75vh;
+  overflow: scroll;
   width: 95%;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
   margin-top: 20px;
+}
+
+.tasks-main::-webkit-scrollbar{
+  width: 0;
 }
 
 .task-el{
   display: grid;
-  grid-template-columns: 30px 2fr 3fr 2fr 2fr 0.5fr;
+  grid-template-columns: 30px 2fr 3fr 2fr 1fr 0.5fr;
   align-items: center;
   justify-content: space-between;
+  margin: 10px;
+  max-height: 40px;
   padding: 10px;
+  color: white;
+  background-color: var(--second);
+  border-radius: 100px;
+}
+
+.task-el > h2{
+  font-size: 1.2rem;
 }
 
 .task-el > * {
@@ -152,4 +273,5 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0;
 }
